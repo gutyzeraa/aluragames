@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendação de Jogos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            color: white;
+            background: black;
+            margin: 0px;
+            font-family: "Chakra Petch", sans-serif;
+            margin-bottom: 100px;
+        }
+
+        header {
+            border-bottom: solid 2px rgb(42, 122, 228);
+            padding: 20px;
+            font-size: 32px;
+            color: rgb(42, 122, 228);
+            text-align: center;
+        }
+
+        .chamada {
+            background: rgb(184, 156, 213);
+            padding-bottom: 80px;
+            padding-top: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centraliza verticalmente o texto e a imagem da chamada */
+            flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
+        }
+
+        .chamada-texto {
+            margin-right: 5%;
+            max-width: 500px; /* Limita a largura do texto para melhor leitura */
+            text-align: center; /* Centraliza o texto dentro da sua área */
+        }
+
+        h1 {
+            font-size: 40px;
+            color: black; /* Alterado para contraste com o fundo da chamada */
+        }
+
+        .chamada p {
+            font-size: 20px;
+            color: black; /* Alterado para contraste com o fundo da chamada */
+        }
+
+        .categoria-videos {
+            display: flex;
+            overflow-x: auto; /* Permite rolar horizontalmente se houver muitos itens */
+            gap: 20px; /* Aumentado o espaço entre as imagens */
+            padding: 20px; /* Adicionado padding para melhor visualização na rolagem */
+            justify-content: flex-start; /* Alinha o início das imagens à esquerda */
+            -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos iOS */
+        }
+
+        .categoria {
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top: 50px;
+        }
+
+        .game-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-shrink: 0; /* Impede que os itens encolham */
+            width: 250px; /* Define uma largura fixa para cada item de jogo */
+        }
+
+        .game-item img {
+            width: 250px; /* Garante que a imagem tenha a largura do item */
+            height: 150px; /* Altura fixa para uniformidade, você pode ajustar */
+            object-fit: cover; /* Garante que a imagem cubra a área sem distorção */
+            opacity: 0.7; /* Opacidade inicial ajustada para um visual mais sutil */
+            border: 3px solid transparent; /* Borda transparente inicial */
+            transition: opacity 0.3s ease, border 0.3s ease; /* Transição suave */
+            border-radius: 8px; /* Borda arredondada para as imagens */
+        }
+
+        .game-item img:hover {
+            opacity: 1.0;
+            border: 3px solid rgb(42, 122, 228); /* Borda azul ao passar o mouse */
+        }
+
+        .game-item h3 {
+            color: rgb(42, 122, 228);
+            font-size: 24px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .game-item p {
+            font-size: 16px;
+            color: #ccc;
+            text-align: justify; /* Justifica o texto para melhor leitura */
+            padding: 0 10px; /* Adiciona um pequeno padding nas laterais do parágrafo */
+        }
+
+        .categoria h2 {
+            color: rgb(42, 122, 228);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Minhas Recomendações de Jogos
+    </header>
+
+    <section class="chamada">
+        <div class="chamada-texto">
+            <h1>Descubra o Seu Próximo Jogo Favorito!</h1>
+            <p>Seja bem-vindo(a) à nossa seleção especial de jogos. Prepare-se para mergulhar em mundos fantásticos, enfrentar desafios épicos e viver aventuras inesquecíveis. Nossa curadoria foi feita pensando em diversos estilos, garantindo que você encontre algo que ame!</p>
+        </div>
+    </section>
+
+    <div class="categoria">
+        <h2>Jogos em Destaque</h2>
+        <div class="categoria-videos">
+
+            <div class="game-item">
+                <img src="gta5.jpeg" alt="Grand Theft Auto V">
+                <h3>Grand Theft Auto V</h3>
+                <p><strong>Minha opinião positiva:</strong> GTA V é uma obra-prima de mundo aberto. A liberdade de exploração, a narrativa envolvente com três protagonistas e a vasta gama de atividades, desde missões cheias de ação até simples passeios por Los Santos, o tornam um jogo incrivelmente divertido e re-jogável. O modo online, GTA Online, oferece uma experiência multiplayer que nunca fica velha, com atualizações constantes e muita coisa para fazer com amigos.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="gta6.jpeg" alt="Grand Theft Auto VI">
+                <h3>Grand Theft Auto VI (Próximo Lançamento)</h3>
+                <p><strong>Minha opinião positiva:</strong> Embora ainda não lançado, o hype para GTA VI é estratosférico, e por um bom motivo. A Rockstar Games tem um histórico de entregar jogos que definem gerações, e a expectativa é que GTA VI eleve ainda mais o nível em termos de gráficos, história e imersão. A promessa de um retorno a Vice City e a introdução de uma protagonista feminina já criam uma antecipação enorme para o que pode ser um dos maiores lançamentos da história dos videogames.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="minecraft.jpeg" alt="Minecraft">
+                <h3>Minecraft</h3>
+                <p><strong>Minha opinião positiva:</strong> Minecraft é um fenômeno atemporal. Sua simplicidade no conceito de construir e explorar, combinada com a profundidade das possibilidades de criação e a liberdade quase ilimitada, o torna um jogo acessível para todas as idades e com um potencial de criatividade sem igual. É um jogo que permite que a imaginação do jogador seja o verdadeiro limite, seja construindo castelos épicos, explorando cavernas ou criando sistemas complexos de redstone.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="fortnite.jpeg" alt="Fortnite">
+                <h3>Fortnite</h3>
+                <p><strong>Minha opinião positiva:</strong> Fortnite redefiniu o gênero Battle Royale com sua jogabilidade dinâmica, a inclusão do sistema de construção e suas constantes atualizações temáticas e colaborações. A Epic Games mantém o jogo sempre fresco e interessante, com eventos ao vivo que mudam o mapa, novos modos de jogo e uma infinidade de skins e emotes que permitem uma personalização vasta. É um jogo vibrante e social, perfeito para jogar com amigos.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="apexlegends.jpeg" alt="Apex Legends">
+                <h3>Apex Legends</h3>
+                <p><strong>Minha opinião positiva:</strong> Apex Legends se destaca no cenário Battle Royale por sua jogabilidade baseada em classes (Lendas), comunicação de ping intuitiva e tiroteios fluidos e satisfatórios. A Respawn Entertainment criou um jogo com um sistema de movimento excelente e um foco em trabalho em equipe que é muito recompensador. Cada Lenda tem habilidades únicas que complementam o estilo de jogo, tornando as partidas estratégicas e empolgantes.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="freefire.jpeg" alt="Free Fire">
+                <h3>Free Fire</h3>
+                <p><strong>Minha opinião positiva:</strong> Free Fire é um gigante no mundo dos jogos mobile, e por um bom motivo. Sua jogabilidade de Battle Royale é rápida, intensa e otimizada para dispositivos móveis, o que o torna extremamente acessível. As partidas curtas e cheias de ação são perfeitas para sessões rápidas de jogo, e a Garena oferece uma vasta gama de personagens e itens para personalização. É um jogo que entrega emoção e competitividade na palma da mão.</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
