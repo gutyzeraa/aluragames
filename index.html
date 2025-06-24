@@ -6,21 +6,16 @@
     <title>Recomendação de Jogos</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body 
-      function setup() {
-  createCanvas(400, 400);
-}
-
-function draw() {
-  background(220);
-}
-   color: white;
+        /* Estilos globais para o corpo da página */
+        body {
+            color: white;
             background: black;
             margin: 0px;
             font-family: "Chakra Petch", sans-serif;
             margin-bottom: 100px;
         }
 
+        /* Estilos para o cabeçalho */
         header {
             border-bottom: solid 2px rgb(42, 122, 228);
             padding: 20px;
@@ -29,6 +24,7 @@ function draw() {
             text-align: center;
         }
 
+        /* Estilos para a seção de chamada (banner principal) */
         .chamada {
             background: rgb(184, 156, 213);
             padding-bottom: 80px;
@@ -39,37 +35,51 @@ function draw() {
             flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
         }
 
+        /* Estilos para o texto dentro da seção de chamada */
         .chamada-texto {
             margin-right: 5%;
             max-width: 500px; /* Limita a largura do texto para melhor leitura */
             text-align: center; /* Centraliza o texto dentro da sua área */
         }
 
+        /* Estilos para o título principal (h1) dentro da chamada */
         h1 {
             font-size: 40px;
             color: black; /* Alterado para contraste com o fundo da chamada */
         }
 
+        /* Estilos para o parágrafo dentro da chamada */
         .chamada p {
             font-size: 20px;
             color: black; /* Alterado para contraste com o fundo da chamada */
         }
 
+        /* Estilos para o contêiner de vídeos de categoria (rolagem horizontal) */
         .categoria-videos {
             display: flex;
             overflow-x: auto; /* Permite rolar horizontalmente se houver muitos itens */
-            gap: 20px; /* Aumentado o espaço entre as imagens */
+            gap: 20px; /* Aumentado o espaço entre as mídias */
             padding: 20px; /* Adicionado padding para melhor visualização na rolagem */
-            justify-content: flex-start; /* Alinha o início das imagens à esquerda */
+            justify-content: flex-start; /* Alinha o início das mídias à esquerda */
             -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos iOS */
+            /* Esconde a barra de rolagem para um visual mais limpo, mas mantém a funcionalidade */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
         }
 
+        /* Esconde a barra de rolagem para navegadores baseados em WebKit (Chrome, Safari) */
+        .categoria-videos::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Estilos para a seção de cada categoria de jogos */
         .categoria {
             padding-left: 20px;
             padding-right: 20px;
             margin-top: 50px;
         }
 
+        /* Estilos para cada item de jogo individual */
         .game-item {
             display: flex;
             flex-direction: column;
@@ -79,21 +89,27 @@ function draw() {
             width: 250px; /* Define uma largura fixa para cada item de jogo */
         }
 
-        .game-item img {
-            width: 250px; /* Garante que a imagem tenha a largura do item */
-            height: 150px; /* Altura fixa para uniformidade, você pode ajustar */
-            object-fit: cover; /* Garante que a imagem cubra a área sem distorção */
+        /* Estilos para as imagens dos jogos e agora também para iframes de vídeo */
+        .game-item img,
+        .game-item iframe {
+            width: 250px; /* Garante que a mídia tenha a largura do item */
+            height: 150px; /* Altura fixa para uniformidade */
+            object-fit: cover; /* Garante que a mídia cubra a área sem distorção */
             opacity: 0.7; /* Opacidade inicial ajustada para um visual mais sutil */
             border: 3px solid transparent; /* Borda transparente inicial */
             transition: opacity 0.3s ease, border 0.3s ease; /* Transição suave */
-            border-radius: 8px; /* Borda arredondada para as imagens */
+            border-radius: 8px; /* Borda arredondada para as mídias */
+            display: block; /* Garante que o iframe se comporte como um elemento de bloco */
         }
 
-        .game-item img:hover {
+        /* Efeito hover para as imagens/vídeos dos jogos */
+        .game-item img:hover,
+        .game-item iframe:hover {
             opacity: 1.0;
             border: 3px solid rgb(42, 122, 228); /* Borda azul ao passar o mouse */
         }
 
+        /* Estilos para o título (h3) de cada jogo */
         .game-item h3 {
             color: rgb(42, 122, 228);
             font-size: 24px;
@@ -101,6 +117,7 @@ function draw() {
             margin-bottom: 5px;
         }
 
+        /* Estilos para o parágrafo de descrição de cada jogo */
         .game-item p {
             font-size: 16px;
             color: #ccc;
@@ -108,19 +125,36 @@ function draw() {
             padding: 0 10px; /* Adiciona um pequeno padding nas laterais do parágrafo */
         }
 
+        /* Estilos para o título (h2) de cada categoria */
         .categoria h2 {
             color: rgb(42, 122, 228);
             text-align: center;
             margin-bottom: 30px;
-        }     
-html, body {
-  margin: 0;
-  padding: 0;
-}
-canvas {
-  display: block;
-}
- </style>
+        }
+
+        /* Estilos para as opiniões (positiva e negativa) */
+        .opiniao {
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: left; /* Alinha o texto das opiniões à esquerda */
+            width: 100%; /* Garante que a div de opinião ocupe a largura total do item */
+        }
+
+        .opiniao-positiva {
+            color: #00ff00; /* Verde para opinião positiva */
+            margin-bottom: 5px;
+        }
+
+        .opiniao-negativa {
+            color: #ff0000; /* Vermelho para opinião negativa */
+        }
+
+        /* Garante que o html e o body não tenham margens/padding extras */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -134,44 +168,230 @@ canvas {
         </div>
     </section>
 
+    <!-- Primeira fileira de jogos: Jogos em Destaque (agora com vídeos do YouTube) -->
     <div class="categoria">
         <h2>Jogos em Destaque</h2>
         <div class="categoria-videos">
 
             <div class="game-item">
-                <img src="gta5.jpeg" alt="Grand Theft Auto V">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/UpfZfATEBlw?controls=0&modestbranding=1&rel=0"
+                    title="Grand Theft Auto V Gameplay Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
                 <h3>Grand Theft Auto V</h3>
                 <p><strong>Minha opinião positiva:</strong> GTA V é uma obra-prima de mundo aberto. A liberdade de exploração, a narrativa envolvente com três protagonistas e a vasta gama de atividades, desde missões cheias de ação até simples passeios por Los Santos, o tornam um jogo incrivelmente divertido e re-jogável. O modo online, GTA Online, oferece uma experiência multiplayer que nunca fica velha, com atualizações constantes e muita coisa para fazer com amigos.</p>
             </div>
 
             <div class="game-item">
-                <img src="gta6.jpeg" alt="Grand Theft Auto VI">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/U7gEqXTLvtg?controls=0&modestbranding=1&rel=0"
+                    title="Grand Theft Auto VI Official Trailer 1"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
                 <h3>Grand Theft Auto VI (Próximo Lançamento)</h3>
                 <p><strong>Minha opinião positiva:</strong> Embora ainda não lançado, o hype para GTA VI é estratosférico, e por um bom motivo. A Rockstar Games tem um histórico de entregar jogos que definem gerações, e a expectativa é que GTA VI eleve ainda mais o nível em termos de gráficos, história e imersão. A promessa de um retorno a Vice City e a introdução de uma protagonista feminina já criam uma antecipação enorme para o que pode ser um dos maiores lançamentos da história dos videogames.</p>
             </div>
 
             <div class="game-item">
-                <img src="minecraft.jpeg" alt="Minecraft">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/Oh4ZupMubWQ?controls=0&modestbranding=1&rel=0"
+                    title="Minecraft Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
                 <h3>Minecraft</h3>
                 <p><strong>Minha opinião positiva:</strong> Minecraft é um fenômeno atemporal. Sua simplicidade no conceito de construir e explorar, combinada com a profundidade das possibilidades de criação e a liberdade quase ilimitada, o torna um jogo acessível para todas as idades e com um potencial de criatividade sem igual. É um jogo que permite que a imaginação do jogador seja o verdadeiro limite, seja construindo castelos épicos, explorando cavernas ou criando sistemas complexos de redstone.</p>
             </div>
 
             <div class="game-item">
-                <img src="fortnite.jpeg" alt="Fortnite">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/z-kwWqMGgUA?controls=0&modestbranding=1&rel=0"
+                    title="Fortnite Chapter 5 Season 2 Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
                 <h3>Fortnite</h3>
                 <p><strong>Minha opinião positiva:</strong> Fortnite redefiniu o gênero Battle Royale com sua jogabilidade dinâmica, a inclusão do sistema de construção e suas constantes atualizações temáticas e colaborações. A Epic Games mantém o jogo sempre fresco e interessante, com eventos ao vivo que mudam o mapa, novos modos de jogo e uma infinidade de skins e emotes que permitem uma personalização vasta. É um jogo vibrante e social, perfeito para jogar com amigos.</p>
             </div>
 
             <div class="game-item">
-                <img src="apexlegends.jpeg" alt="Apex Legends">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/Aqd6ZmyRqdM?controls=0&modestbranding=1&rel=0"
+                    title="Apex Legends Season 21 Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
                 <h3>Apex Legends</h3>
                 <p><strong>Minha opinião positiva:</strong> Apex Legends se destaca no cenário Battle Royale por sua jogabilidade baseada em classes (Lendas), comunicação de ping intuitiva e tiroteios fluidos e satisfatórios. A Respawn Entertainment criou um jogo com um sistema de movimento excelente e um foco em trabalho em equipe que é muito recompensador. Cada Lenda tem habilidades únicas que complementam o estilo de jogo, tornando as partidas estratégicas e empolgantes.</p>
             </div>
 
             <div class="game-item">
-                <img src="freefire.jpeg" alt="Free Fire">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/q4VSH0KpvUw?controls=0&modestbranding=1&rel=0"
+                    title="Free Fire Official Cinematic Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
                 <h3>Free Fire</h3>
                 <p><strong>Minha opinião positiva:</strong> Free Fire é um gigante no mundo dos jogos mobile, e por um bom motivo. Sua jogabilidade de Battle Royale é rápida, intensa e otimizada para dispositivos móveis, o que o torna extremamente acessível. As partidas curtas e cheias de ação são perfeitas para sessões rápidas de jogo, e a Garena oferece uma vasta gama de personagens e itens para personalização. É um jogo que entrega emoção e competitividade na palma da mão.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Segunda fileira de jogos: Aventura e RPG -->
+    <div class="categoria">
+        <h2>Aventura e RPG</h2>
+        <div class="categoria-videos">
+
+            <div class="game-item">
+                <img src="https://placehold.co/250x150/000000/FFFFFF?text=The+Witcher+3" alt="The Witcher 3: Wild Hunt">
+                <h3>The Witcher 3: Wild Hunt</h3>
+                <p><strong>Minha opinião positiva:</strong> The Witcher 3 é um marco nos RPGs de mundo aberto. Com uma narrativa madura, personagens inesquecíveis e um mundo vasto e detalhado que reage às suas escolhas, cada missão parece importante. A caça a monstros, as decisões morais complexas e a profundidade do universo de Geralt de Rívia tornam este jogo uma experiência imersiva e recompensadora.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="https://placehold.co/250x150/000000/FFFFFF?text=Zelda:+BotW" alt="The Legend of Zelda: Breath of the Wild">
+                <h3>The Legend of Zelda: Breath of the Wild</h3>
+                <p><strong>Minha opinião positiva:</strong> Breath of the Wild reinventou a franquia Zelda e o gênero de mundo aberto. A liberdade de exploração é incomparável, permitindo que você vá a qualquer lugar desde o início. Com quebra-cabeças inteligentes, combate divertido e uma física impressionante, é um jogo que constantemente recompensa a curiosidade e a experimentação. Uma verdadeira aventura épica.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="https://placehold.co/250x150/000000/FFFFFF?text=Elden+Ring" alt="Elden Ring">
+                <h3>Elden Ring</h3>
+                <p><strong>Minha opinião positiva:</strong> Elden Ring leva a aclamada fórmula Souls-like da FromSoftware para um vasto mundo aberto, resultando em uma experiência desafiadora, mas incrivelmente gratificante. A exploração é cativante, cada canto esconde um segredo, e o combate é visceral e exige maestria. A rica lore e a sensação de descoberta constante fazem de Elden Ring um título inesquecível para fãs de RPG de ação.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="https://placehold.co/250x150/000000/FFFFFF?text=Red+Dead+Redemption+2" alt="Red Dead Redemption 2">
+                <h3>Red Dead Redemption 2</h3>
+                <p><strong>Minha opinião positiva:</strong> Red Dead Redemption 2 é uma obra-prima narrativa e técnica. O mundo aberto do Velho Oeste é deslumbrante e cheio de vida, e a história de Arthur Morgan é uma das mais emocionantes e bem escritas nos videogames. A atenção aos detalhes é fenomenal, e a imersão que o jogo proporciona é incomparável. É uma experiência que fica com você muito tempo depois de terminar.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="https://placehold.co/250x150/000000/FFFFFF?text=Cyberpunk+2077" alt="Cyberpunk 2077">
+                <h3>Cyberpunk 2077</h3>
+                <p><strong>Minha opinião positiva:</strong> Cyberpunk 2077, após suas melhorias, se tornou um RPG de ação envolvente ambientado na vibrante e distópica Night City. A liberdade de personalização do personagem, as missões secundárias profundas e as escolhas de diálogo que afetam a narrativa principal criam uma experiência rica e imersiva. O combate é dinâmico, e a atmosfera cyberpunk é perfeitamente capturada.</p>
+            </div>
+
+            <div class="game-item">
+                <img src="https://placehold.co/250x150/000000/FFFFFF?text=God+of+War" alt="God of War (2018)">
+                <h3>God of War (2018)</h3>
+                <p><strong>Minha opinião positiva:</strong> O God of War de 2018 reinventou Kratos em uma emocionante jornada pela mitologia nórdica, acompanhado de seu filho Atreus. A narrativa é poderosa e comovente, o combate é brutal e tático, e os gráficos são de tirar o fôlego. É um jogo que equilibra perfeitamente a ação intensa com momentos de profunda exploração emocional e de mundo.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Nova fileira de jogos: Mais Recomendações (com vídeos e opiniões positiva/negativa) -->
+    <div class="categoria">
+        <h2>Mais Recomendações</h2>
+        <div class="categoria-videos">
+
+            <div class="game-item">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/cILjkbF8bzk?controls=0&modestbranding=1&rel=0"
+                    title="God of War Ragnarök Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <h3>God of War Ragnarök</h3>
+                <p>
+                    <strong class="opiniao-positiva">Opinião Positiva:</strong> Ragnarök eleva tudo que tornou o God of War de 2018 incrível. A narrativa é ainda mais épica e emocional, o combate é refinado e oferece mais opções, e a exploração dos Nove Reinos é visualmente deslumbrante. É uma conclusão digna para a saga nórdica de Kratos e Atreus.
+                    <br><strong class="opiniao-negativa">Opinião Negativa:</strong> Embora brilhante, o jogo segue uma fórmula muito similar ao seu antecessor, o que pode parecer um pouco previsível para alguns. A progressão, embora boa, não inova tanto quanto o primeiro jogo da saga nórdica.
+                </p>
+            </div>
+
+            <div class="game-item">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/VDB-4D5sQps?controls=0&modestbranding=1&rel=0"
+                    title="Red Dead Redemption 2 Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <h3>Red Dead Redemption 2 (Visão Detalhada)</h3>
+                <p>
+                    <strong class="opiniao-positiva">Opinião Positiva:</strong> A imersão em RDR2 é inigualável. Cada detalhe, desde o ciclo de dia e noite até a interação com NPCs e a caça, contribui para um mundo vivo e crível. A história é uma das melhores já contadas em jogos, focando em personagens complexos e um mundo em mudança, com uma profundidade narrativa que emociona.
+                    <br><strong class="opiniao-negativa">Opinião Negativa:</strong> O ritmo do jogo pode ser bastante lento para alguns, especialmente no início, e a quantidade de detalhes pode se tornar sobrecarregada para quem busca uma experiência mais direta. As animações realistas, embora imersivas, podem tornar algumas interações repetitivas.
+                </p>
+            </div>
+
+            <div class="game-item">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/7qHRvKgYf_0?controls=0&modestbranding=1&rel=0"
+                    title="Roblox Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <h3>Roblox</h3>
+                <p>
+                    <strong class="opiniao-positiva">Opinião Positiva:</strong> Roblox é uma plataforma de criatividade e diversão ilimitadas, onde milhões de jogos e experiências são criados e compartilhados pelos próprios usuários. É um ambiente seguro e diversificado para explorar, aprender e interagir com amigos, com algo novo para descobrir a todo momento.
+                    <br><strong class="opiniao-negativa">Opinião Negativa:</strong> A qualidade dos jogos varia muito, e alguns podem não ser tão bem polidos. Embora gratuito para jogar, o modelo de monetização (Robux) pode incentivar gastos para acessar certas funcionalidades ou itens exclusivos, o que pode ser uma preocupação para alguns pais.
+                </p>
+            </div>
+
+            <div class="game-item">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/JTFgLCB8p5U?controls=0&modestbranding=1&rel=0"
+                    title="ARK: Survival Evolved Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <h3>ARK: Survival Evolved</h3>
+                <p>
+                    <strong class="opiniao-positiva">Opinião Positiva:</strong> ARK oferece uma experiência de sobrevivência única e emocionante com dinossauros. A capacidade de domar, criar e montar essas criaturas gigantes, construir bases e explorar um mundo vasto e perigoso proporciona infinitas horas de aventura e desafios. É um jogo que brilha no multiplayer, com amigos ou em tribos maiores.
+                    <br><strong class="opiniao-negativa">Opinião Negativa:</strong> O jogo é conhecido por ser bastante exigente em termos de hardware e pode ter problemas de otimização em algumas plataformas. A curva de aprendizado é íngreme, e o grind (necessidade de coletar muitos recursos repetidamente) pode ser exaustivo para novos jogadores.
+                </p>
+            </div>
+
+            <div class="game-item">
+                <iframe
+                    width="250"
+                    height="150"
+                    src="https://www.youtube.com/embed/wEwXjYF72Lg?controls=0&modestbranding=1&rel=0"
+                    title="Horizon Zero Dawn Trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <h3>Horizon Zero Dawn</h3>
+                <p>
+                    <strong class="opiniao-positiva">Opinião Positiva:</strong> Horizon Zero Dawn apresenta um mundo pós-apocalíptico deslumbrante, dominado por máquinas-dinossauros, e uma protagonista cativante, Aloy. O combate é inovador e tático, exigindo estratégia para derrubar as máquinas, e a história é envolvente, com mistérios que te prendem até o fim. Os gráficos são incríveis!
+                    <br><strong class="opiniao-negativa">Opinião Negativa:</strong> Algumas missões secundárias podem ser um pouco repetitivas em sua estrutura. Embora o combate seja excelente, a interação com o mundo em si pode parecer menos dinâmica em comparação com outros jogos de mundo aberto.
+                </p>
             </div>
 
         </div>
